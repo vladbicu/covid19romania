@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import AreaChartWrapper from "./../components/AreaChart";
+import LineChartWrapper from "../components/LineChart";
 import { getTestsTakenAction } from "./../actions/action-creators";
 
 const stateToProps = state => ({
@@ -14,4 +14,4 @@ const dispatchToProps = dispatch => ({
   }
 });
 
-export default connect(stateToProps, dispatchToProps)(AreaChartWrapper);
+export default connect(stateToProps, dispatchToProps)(LineChartWrapper);

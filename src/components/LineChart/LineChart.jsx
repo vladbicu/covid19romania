@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import {
-  AreaChart,
-  Area,
+  LineChart,
+  Line,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -10,7 +10,7 @@ import {
 } from "recharts";
 import { Loader } from 'semantic-ui-react';
 
-const AreaChartWrapper = ({
+const LineChartWrapper = ({
   color = '#8884d8',
   data,
   getData,
@@ -23,10 +23,10 @@ const AreaChartWrapper = ({
   }, []);
 
   const renderChart = () => (
-    <AreaChart
+    <LineChart
       key={title}
       width={window.innerWidth - margin * 2}
-      height={400}
+      height={500}
       data={data}
       margin={{
         top: 10,
@@ -40,8 +40,8 @@ const AreaChartWrapper = ({
       <YAxis dataKey="value" />
       <Tooltip />
       <Legend />
-      <Area type="monotone" dataKey="value" stroke={color} fill={color} />
-    </AreaChart>
+      <Line type="monotone" dataKey="value" stroke={color} activeDot={{ r: 10}} />
+    </LineChart>
   );
 
   return (
@@ -52,4 +52,4 @@ const AreaChartWrapper = ({
   );
 };
 
-export default AreaChartWrapper;
+export default LineChartWrapper;
