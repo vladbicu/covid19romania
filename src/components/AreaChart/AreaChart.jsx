@@ -11,6 +11,7 @@ import {
 import { Loader } from 'semantic-ui-react';
 
 const AreaChartWrapper = ({
+  color = '#8884d8',
   data,
   getData,
   isLoading,
@@ -39,7 +40,7 @@ const AreaChartWrapper = ({
       <YAxis dataKey="value" />
       <Tooltip />
       <Legend />
-      <Area type="monotone" dataKey="value" stroke="#8884d8" fill="#8884d8" />
+      <Area type="monotone" dataKey="value" stroke={color} fill={color} />
     </AreaChart>
   );
 
