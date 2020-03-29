@@ -6,7 +6,15 @@ const initialState = {
       metric: "",
       values: []
     },
+    isolatedStats: {
+      metric: "",
+      values: []
+    },
     medicalCases: {
+      metric: "",
+      values: []
+    },
+    quarantinedStats: {
       metric: "",
       values: []
     },
@@ -28,7 +36,9 @@ const initialState = {
     isLoadingMedicalCases: false,
     isLoadingTotalCases: false,
     isLoadingTotalDeaths: false,
-    isLoadingTotalTestsTaken: false
+    isLoadingTotalTestsTaken: false,
+    isLoadingIsolatedStats: false,
+    isLoadingQuarantinedStats: false
   }
 };
 
@@ -177,6 +187,64 @@ const covid = (state = initialState, action) => {
         ui: {
           ...state.ui,
           isLoadingTotalTestsTaken: false
+        }
+      };
+    // Quarantined stats
+    case COVID_ACTIONS.GET_QUARANTINED_STATS:
+      return {
+        ...state,
+        ui: {
+          ...state.ui,
+          isLoadingQuarantinedStats: true
+        }
+      };
+    case COVID_ACTIONS.RECEIVE_QUARANTINED_STATS:
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          quarantinedStats: action.payload
+        },
+        ui: {
+          ...state.ui,
+          isLoadingQuarantinedStats: false
+        }
+      };
+    case COVID_ACTIONS.FINISH_QUARANTINED_STATS:
+      return {
+        ...state,
+        ui: {
+          ...state.ui,
+          isLoadingQuarantinedStats: false
+        }
+      };
+    // Isolated stats
+    case COVID_ACTIONS.GET_ISOLATED_STATS:
+      return {
+        ...state,
+        ui: {
+          ...state.ui,
+          isLoadingIsolatedStats: true
+        }
+      };
+    case COVID_ACTIONS.RECEIVE_ISOLATED_STATS:
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          isolatedStats: action.payload
+        },
+        ui: {
+          ...state.ui,
+          isLoadingIsolatedStats: false
+        }
+      };
+    case COVID_ACTIONS.FINISH_ISOLATED_STATS:
+      return {
+        ...state,
+        ui: {
+          ...state.ui,
+          isLoadingIsolatedStats: false
         }
       };
     default:

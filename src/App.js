@@ -5,6 +5,8 @@ import MedicalCases from './providers/medicalCasesProvider';
 import TotalCases from "./providers/totalCasesProvider";
 import TotalDeaths from "./providers/totalDeathsProvider";
 import TotalTestsTaken from "./providers/testsTakenProvider";
+import IsolatedStats from "./providers/isolatedStatsProvider";
+import QuarantinedStats from "./providers/quarantinedStatsProvider";
 
 import './App.css';
 
@@ -16,6 +18,8 @@ function App() {
       <DailyNewCases />
       <TotalTestsTaken />
       <MedicalCases />
+      <IsolatedStats />
+      <QuarantinedStats />
     </div>
   );
 }

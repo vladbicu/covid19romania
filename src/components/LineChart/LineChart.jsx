@@ -6,7 +6,8 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend
+  Legend,
+  ResponsiveContainer
 } from "recharts";
 import { Loader } from 'semantic-ui-react';
 
@@ -23,29 +24,31 @@ const LineChartWrapper = ({
   }, []);
 
   const renderChart = () => (
-    <LineChart
-      key={title}
-      width={window.innerWidth - margin * 2}
-      height={500}
-      data={data}
-      margin={{
-        top: 10,
-        right: margin,
-        left: margin,
-        bottom: 0
-      }}
-    >
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="date" />
-      <YAxis dataKey="value" />
-      <Tooltip />
-      <Legend />
-      <Line type="monotone" dataKey="value" stroke={color} activeDot={{ r: 10}} />
-    </LineChart>
+    <ResponsiveContainer height={400}>
+      <LineChart
+        key={title}
+        width={window.innerWidth - margin * 2}
+        height={500}
+        data={data}
+        margin={{
+          top: 10,
+          right: margin,
+          left: margin,
+          bottom: 0
+        }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="date" />
+        <YAxis dataKey="value" />
+        <Tooltip />
+        <Legend />
+        <Line type="monotone" dataKey="value" stroke={color} activeDot={{ r: 10}} />
+      </LineChart>
+    </ResponsiveContainer>
   );
 
   return (
-    <div className="area-chart-wrapper">
+    <div className="chart-wrapper">
       <h3>{title}</h3>
       {isLoading ? <Loader /> : renderChart()}
     </div>

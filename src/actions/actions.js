@@ -17,7 +17,15 @@ export const COVID_ACTIONS = {
 
   GET_TESTS_TAKEN: "getTestsTaken",
   RECEIVE_TESTS_TAKEN: "receiveTestsTaken",
-  FINISH_TESTS_TAKEN: "finishTestsTaken"
+  FINISH_TESTS_TAKEN: "finishTestsTaken",
+
+  GET_QUARANTINED_STATS: "getQuarantinedStats",
+  RECEIVE_QUARANTINED_STATS: "receiveQuarantinedStats",
+  FINISH_QUARANTINED_STATS: "finishQuarantinedStats",
+
+  GET_ISOLATED_STATS: "getIsolatedPeopleStats",
+  RECEIVE_ISOLATED_STATS: "receiveIsolatedPeopleStats",
+  FINISH_ISOLATED_STATS: "finishIsolatedPeopleStats",
 };
 
 // Total infections in Romania
@@ -88,4 +96,32 @@ export const receiveTestsTaken = payload => ({
 
 export const finishTestsTaken = () => ({
   type: COVID_ACTIONS.FINISH_TESTS_TAKEN
+});
+
+// Number of quarantined people
+export const getQuarantinedStats = () => ({
+  type: COVID_ACTIONS.GET_QUARANTINED_STATS
+});
+
+export const receiveQuarantinedStats = payload => ({
+  type: COVID_ACTIONS.RECEIVE_QUARANTINED_STATS,
+  payload
+});
+
+export const finishQuarantinedStats = () => ({
+  type: COVID_ACTIONS.FINISH_QUARANTINED_STATS
+});
+
+// Number of isolated people
+export const getIsolatedPeopleStats = () => ({
+  type: COVID_ACTIONS.GET_ISOLATED_STATS
+});
+
+export const receiveIsolatedPeopleStats = payload => ({
+  type: COVID_ACTIONS.RECEIVE_ISOLATED_STATS,
+  payload
+});
+
+export const finishIsolatedPeopleStats = () => ({
+  type: COVID_ACTIONS.FINISH_ISOLATED_STATS
 });
