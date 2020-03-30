@@ -7,9 +7,12 @@ import TotalDeaths from "./providers/totalDeathsProvider";
 import TotalTestsTaken from "./providers/testsTakenProvider";
 import IsolatedStats from "./providers/isolatedStatsProvider";
 import QuarantinedStats from "./providers/quarantinedStatsProvider";
-import DeathsRatio from "./providers/deathsRatioProvider";
+import DeathsPercent from "./providers/deathsRatioProvider";
+import RecoveredPercent from "./providers/recoveredPercentProvider";
 import TotalCasesNumber from "./providers/totalCasesNumberProvider";
 import TotalDeathsNumber from "./providers/totalDeathsNumberProvider";
+import TotalRecoveredNumber from "./providers/totalRecoveredNumberProvider";
+import RecoveredStats from "./providers/recoveredStatsProvider";
 
 import './App.css';
 
@@ -19,7 +22,9 @@ function App() {
       <div className="left-side">
         <TotalCasesNumber />
         <TotalDeathsNumber />
-        <DeathsRatio title="Procentul deceselor de COVID-19 raportat la numarul de cazuri confirmate" />
+        <TotalRecoveredNumber />
+        <DeathsPercent title="Procentul deceselor de COVID-19 raportat la numarul de cazuri confirmate" />
+        <RecoveredPercent title="Procentul persoanelor vindecate de COVID-19 raportat la numarul de cazuri confirmate" />
       </div>
       <div className="right-side">
         <TotalCases />
@@ -29,6 +34,7 @@ function App() {
         <MedicalCases />
         <IsolatedStats />
         <QuarantinedStats />
+        <RecoveredStats />
       </div>
     </div>
   );

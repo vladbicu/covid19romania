@@ -29,6 +29,10 @@ const initialState = {
     testsTaken: {
       description: "",
       values: []
+    },
+    recoveredStats: {
+      description: "",
+      values: []
     }
   },
   ui: {
@@ -38,7 +42,8 @@ const initialState = {
     isLoadingTotalDeaths: false,
     isLoadingTotalTestsTaken: false,
     isLoadingIsolatedStats: false,
-    isLoadingQuarantinedStats: false
+    isLoadingQuarantinedStats: false,
+    isLoadingRecoveredStats: false
   }
 };
 
@@ -245,6 +250,35 @@ const covid = (state = initialState, action) => {
         ui: {
           ...state.ui,
           isLoadingIsolatedStats: false
+        }
+      };
+    // Recovered stats
+    case COVID_ACTIONS.GET_RECOVERED_STATS:
+      return {
+        ...state,
+        ui: {
+          ...state.ui,
+          isLoadingRecoveredStats: true
+        }
+      };
+    case COVID_ACTIONS.RECEIVE_RECOVERED_STATS:
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          recoveredStats: action.payload
+        },
+        ui: {
+          ...state.ui,
+          isLoadingRecoveredStats: false
+        }
+      };
+    case COVID_ACTIONS.FINISH_RECOVERED_STATS:
+      return {
+        ...state,
+        ui: {
+          ...state.ui,
+          isLoadingRecoveredStats: false
         }
       };
     default:
