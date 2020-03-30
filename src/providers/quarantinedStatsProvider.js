@@ -5,7 +5,7 @@ import { getQuarantinedStatsAction } from "./../actions/action-creators";
 const stateToProps = state => ({
   data: state.covid.data.quarantinedStats.values,
   isLoading: state.covid.ui.isLoadingQuarantinedStats,
-  title: state.covid.data.quarantinedStats.metric
+  title: state.covid.data.quarantinedStats.description.ro
 });
 
 const dispatchToProps = dispatch => ({

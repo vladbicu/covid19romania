@@ -5,7 +5,7 @@ import { getMedicalCasesAction } from "./../actions/action-creators";
 const stateToProps = state => ({
   data: state.covid.data.medicalCases.values,
   isLoading: state.covid.ui.isLoadingMedicalCases,
-  title: state.covid.data.medicalCases.metric
+  title: state.covid.data.medicalCases.description.ro
 });
 
 const dispatchToProps = dispatch => ({

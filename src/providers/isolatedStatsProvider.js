@@ -5,7 +5,7 @@ import { getIsolatedStatsAction } from "./../actions/action-creators";
 const stateToProps = state => ({
   data: state.covid.data.isolatedStats.values,
   isLoading: state.covid.ui.isLoadingIsolatedStats,
-  title: state.covid.data.isolatedStats.metric
+  title: state.covid.data.isolatedStats.description.ro
 });
 
 const dispatchToProps = dispatch => ({

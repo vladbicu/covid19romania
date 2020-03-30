@@ -5,7 +5,7 @@ import { getTotalDeathsAction } from "./../actions/action-creators";
 const stateToProps = state => ({
   data: state.covid.data.totalDeaths.values,
   isLoading: state.covid.ui.isLoadingTotalCases,
-  title: state.covid.data.totalDeaths.metric
+  title: state.covid.data.totalDeaths.description.ro
 });
 
 const dispatchToProps = dispatch => ({

@@ -3,31 +3,31 @@ import { COVID_ACTIONS } from "./actions/actions";
 const initialState = {
   data: {
     dailyCases: {
-      metric: "",
+      description: "",
       values: []
     },
     isolatedStats: {
-      metric: "",
+      description: "",
       values: []
     },
     medicalCases: {
-      metric: "",
+      description: "",
       values: []
     },
     quarantinedStats: {
-      metric: "",
+      description: "",
       values: []
     },
     totalCases: {
-      metric: "",
+      description: "",
       values: []
     },
     totalDeaths: {
-      metric: "",
+      description: "",
       values: []
     },
     testsTaken: {
-      metric: "",
+      description: "",
       values: []
     }
   },

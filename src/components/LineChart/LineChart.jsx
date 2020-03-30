@@ -6,10 +6,9 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer
 } from "recharts";
-import { Loader } from 'semantic-ui-react';
+import { Heading, Card, Spinner } from 'evergreen-ui';
 
 const LineChartWrapper = ({
   color = '#8884d8',
@@ -27,13 +26,13 @@ const LineChartWrapper = ({
     <ResponsiveContainer height={400}>
       <LineChart
         key={title}
-        width={window.innerWidth - margin * 2}
+        width={window.innerWidth}
         height={500}
         data={data}
         margin={{
           top: 10,
           right: margin,
-          left: margin,
+          left: 0,
           bottom: 0
         }}
       >
@@ -41,7 +40,6 @@ const LineChartWrapper = ({
         <XAxis dataKey="date" />
         <YAxis dataKey="value" />
         <Tooltip />
-        <Legend />
         <Line type="monotone" dataKey="value" stroke={color} activeDot={{ r: 10}} />
       </LineChart>
     </ResponsiveContainer>
@@ -49,8 +47,18 @@ const LineChartWrapper = ({
 
   return (
     <div className="chart-wrapper">
-      <h3>{title}</h3>
-      {isLoading ? <Loader /> : renderChart()}
+      <Card
+        interactive={true}
+        elevation={3}
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        flexDirection="column"
+        padding={5}
+      >
+        {isLoading ? <Spinner size={32} /> : renderChart()}
+        <Heading size={600}>{title}</Heading>
+      </Card>
     </div>
   );
 };
