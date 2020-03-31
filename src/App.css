@@ -34,6 +34,13 @@ html {
 }
 
 @media screen and (max-width: 767px) {
+  .App {
+    flex-direction: column;
+  }
+  .left-side,
+  .right-side {
+    width: 100%;
+  }
   .chart-wrapper {
     width: 100%;
   }
