@@ -13,6 +13,7 @@ import TotalCasesNumber from "./providers/totalCasesNumberProvider";
 import TotalDeathsNumber from "./providers/totalDeathsNumberProvider";
 import TotalRecoveredNumber from "./providers/totalRecoveredNumberProvider";
 import RecoveredStats from "./providers/recoveredStatsProvider";
+import ActiveCasesNumber from "./providers/activeCasesNumberProvider";
 
 import './App.css';
 
@@ -21,8 +22,9 @@ function App() {
     <div className="App">
       <div className="left-side">
         <TotalCasesNumber />
-        <TotalDeathsNumber />
         <TotalRecoveredNumber />
+        <ActiveCasesNumber />
+        <TotalDeathsNumber />
         <DeathsPercent title="Procentul deceselor de COVID-19 raportat la numarul de cazuri confirmate" />
         <RecoveredPercent title="Procentul persoanelor vindecate de COVID-19 raportat la numarul de cazuri confirmate" />
       </div>

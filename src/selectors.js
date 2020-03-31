@@ -31,3 +31,19 @@ export const getRecoveredPercent = createSelector(
     return +percentage.toFixed(2);
   }
 );
+
+export const activeCasesNumber = createSelector(
+  totalCases,
+  totalRecovered,
+  (infected, recovered) => {
+    let activeCases = 0;
+    if (infected.length > 0 && recovered.length > 0) {
+      const infectedSum = infected[infected.length - 1].value;
+      const recoveredSum = recovered[recovered.length - 1].value;
+
+      activeCases = infectedSum - recoveredSum;
+    }
+
+    return +activeCases;
+  }
+)
