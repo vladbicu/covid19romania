@@ -62,9 +62,11 @@ export const activeCasesData = createSelector(
       [deaths, recovered].forEach(dataSet => {
         dataSet.forEach(data => {
           const index = activeCases.findIndex(day => day.date === data.date);
-          activeCases[index] = {
-            ...activeCases[index],
-            value: activeCases[index].value - data.value
+          if (index !== -1) {
+            activeCases[index] = {
+              ...activeCases[index],
+              value: activeCases[index].value - data.value
+            }
           }
         })
       });
