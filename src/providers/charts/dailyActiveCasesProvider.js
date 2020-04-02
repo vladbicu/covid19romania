@@ -20,8 +20,4 @@ const stateToProps = state => {
   };
 };
 
-const dispatchToProps = dispatch => ({
-  getData: () => {}
-});
-
-export default connect(stateToProps, dispatchToProps)(LineChartWrapper);
+export default connect(stateToProps)(LineChartWrapper);

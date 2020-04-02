@@ -1,6 +1,5 @@
 import { connect } from "react-redux";
 import LineChart from "../../components/LineChart";
-import { getICUCases } from "../../actions/action-creators";
 
 const stateToProps = state => ({
   data: state.covid.data.totalICU.values,
@@ -8,10 +7,4 @@ const stateToProps = state => ({
   title: state.covid.data.totalICU.description.ro
 });
 
-const dispatchToProps = dispatch => ({
-  getData: () => {
-    dispatch(getICUCases());
-  }
-});
-
-export default connect(stateToProps, dispatchToProps)(LineChart);
+export default connect(stateToProps)(LineChart);

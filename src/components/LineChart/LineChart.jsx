@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   LineChart,
   Line,
@@ -13,14 +13,10 @@ import { Heading, Card, Spinner } from 'evergreen-ui';
 const LineChartWrapper = ({
   color = '#8884d8',
   data,
-  getData,
   isLoading,
   title
 }) => {
-  const margin = 20
-  useEffect(() => {
-    getData();
-  }, []);
+  const margin = 20;
 
   const renderChart = () => (
     <ResponsiveContainer height={400}>

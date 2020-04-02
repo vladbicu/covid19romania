@@ -1,6 +1,5 @@
 import { connect } from "react-redux";
 import LineChartWrapper from "../../components/LineChart";
-import { getIsolatedStatsAction } from "../../actions/action-creators";
 
 const stateToProps = state => ({
   data: state.covid.data.isolatedStats.values,
@@ -8,10 +7,4 @@ const stateToProps = state => ({
   title: state.covid.data.isolatedStats.description.ro
 });
 
-const dispatchToProps = dispatch => ({
-  getData: () => {
-    dispatch(getIsolatedStatsAction());
-  }
-});
-
-export default connect(stateToProps, dispatchToProps)(LineChartWrapper);
+export default connect(stateToProps)(LineChartWrapper);

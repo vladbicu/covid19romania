@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
   Bar,
   ComposedChart,
@@ -14,14 +14,10 @@ import { Heading, Card, Spinner } from "evergreen-ui";
 const ComposedChartWrapper = ({
   color = "#ff7300",
   data,
-  getData,
   isLoading,
   title
 }) => {
   const margin = 20;
-  useEffect(() => {
-    getData();
-  }, []);
 
   const renderChart = () => (
     <ResponsiveContainer height={400}>

@@ -1,5 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from "react-redux";
 import { Heading } from "evergreen-ui";
+
+// actions
+import {
+  getICUCases,
+  getDailyCasesAction,
+  getIsolatedStatsAction,
+  getMedicalCasesAction,
+  getQuarantinedStatsAction,
+  getRecoveredStatsAction,
+  getTestsTakenAction,
+  getTotalCasesAction,
+  getTotalDeathsAction
+} from "./actions/action-creators";
 
 // Providers that render line charts
 import DailyNewCases from "./providers/charts/dailyNewCasesProvider";
@@ -23,7 +37,29 @@ import ActiveCasesNumber from "./providers/number/activeCasesNumberProvider";
 
 import './App.css';
 
-function App() {
+const App = ({
+  getICUCases,
+  getDailyCases,
+  getIsolatedStats,
+  getQuarantinedStats,
+  getRecoveredStats,
+  getTestsTaken,
+  getTotalCases,
+  getTotalDeaths,
+  getMedicalCases
+}) => {
+  useEffect(() => {
+    getICUCases();
+    getDailyCases();
+    getIsolatedStats();
+    getQuarantinedStats();
+    getRecoveredStats();
+    getTestsTaken();
+    getTotalCases();
+    getTotalDeaths();
+    getMedicalCases();
+  }, []);
+
   return (
     <main className="App">
       <header>
@@ -54,6 +90,36 @@ function App() {
       </section>
     </main>
   );
-}
+};
 
-export default App;
+const dispatchToProps = dispatch => ({
+  getICUCases: () => {
+    dispatch(getICUCases());
+  },
+  getDailyCases: () => {
+    dispatch(getDailyCasesAction());
+  },
+  getIsolatedStats: () => {
+    dispatch(getIsolatedStatsAction());
+  },
+  getQuarantinedStats: () => {
+    dispatch(getQuarantinedStatsAction());
+  },
+  getRecoveredStats: () => {
+    dispatch(getRecoveredStatsAction());
+  },
+  getTestsTaken: () => {
+    dispatch(getTestsTakenAction());
+  },
+  getTotalCases: () => {
+    dispatch(getTotalCasesAction());
+  },
+  getTotalDeaths: () => {
+    dispatch(getTotalDeathsAction());
+  },
+  getMedicalCases: () => {
+    dispatch(getMedicalCasesAction());
+  },
+});
+
+export default connect(null, dispatchToProps)(App);
