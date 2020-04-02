@@ -37,25 +37,17 @@ import {
   finishICUStats
 } from "./actions";
 
+const BASE_URL = "https://raw.githubusercontent.com/adrianp/covid19romania/master";
 const URL = {
-  DAILY_NEW_CASES:
-    "https://raw.githubusercontent.com/adrianp/covid19romania/master/new_cases_ro.json",
-  MEDICAL_PERSONEL_INFECTED:
-    "https://raw.githubusercontent.com/adrianp/covid19romania/master/medical_cases_ro.json",
-  ISOLATED_STATS:
-    "https://raw.githubusercontent.com/adrianp/covid19romania/master/isolation_ro.json",
-  QUARANTINED_STATS:
-    "https://raw.githubusercontent.com/adrianp/covid19romania/master/quarantined_ro.json",
-  TOTAL_CASES:
-    "https://raw.githubusercontent.com/adrianp/covid19romania/master/total_cases_ro.json",
-  TOTAL_DEATHS:
-    "https://raw.githubusercontent.com/adrianp/covid19romania/master/total_deaths_ro.json",
-  TOTAL_TESTS_TAKEN:
-    "https://raw.githubusercontent.com/adrianp/covid19romania/master/tests_ro.json",
-  TOTAL_RECOVERED:
-    "https://raw.githubusercontent.com/adrianp/covid19romania/master/total_recovered_ro.json",
-  TOTAL_ICU:
-    "https://raw.githubusercontent.com/adrianp/covid19romania/master/icu_ro.json"
+  DAILY_NEW_CASES: `${BASE_URL}/new_cases_ro.json`,
+  MEDICAL_PERSONEL_INFECTED: `${BASE_URL}/medical_cases_ro.json`,
+  ISOLATED_STATS: `${BASE_URL}/isolation_ro.json`,
+  QUARANTINED_STATS: `${BASE_URL}/quarantined_ro.json`,
+  TOTAL_CASES: `${BASE_URL}/total_cases_ro.json`,
+  TOTAL_DEATHS: `${BASE_URL}/total_deaths_ro.json`,
+  TOTAL_TESTS_TAKEN: `${BASE_URL}/tests_ro.json`,
+  TOTAL_RECOVERED: `${BASE_URL}/total_recovered_ro.json`,
+  TOTAL_ICU: `${BASE_URL}/icu_ro.json`
 };
 
 export const getTotalCasesAction = () => async dispatch => {
@@ -68,7 +60,7 @@ export const getTotalCasesAction = () => async dispatch => {
     console.log(error);
     dispatch(finishTotalCases())
   }
-}
+};
 
 export const getTotalDeathsAction = () => async dispatch => {
   dispatch(getTotalDeaths());
