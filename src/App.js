@@ -34,11 +34,11 @@ function App() {
       </header>
       <section className="left-side">
         <TotalCasesNumber />
+        <ActiveCasesNumber />
         <TotalRecoveredNumber />
         <TotalDeathsNumber />
-        <ActiveCasesNumber />
-        <DeathsPercent title="Procentul deceselor de COVID-19 raportat la numarul de cazuri confirmate" />
         <RecoveredPercent title="Procentul persoanelor vindecate de COVID-19 raportat la numarul de cazuri confirmate" />
+        <DeathsPercent title="Procentul deceselor de COVID-19 raportat la numarul de cazuri confirmate" />
       </section>
       <section className="right-side">
         <TotalCases />
@@ -49,8 +49,7 @@ function App() {
         <TotalDeaths />
         <TotalTestsTaken />
         <QuarantinedStats />
-        <RecoveredStats />
-        <ActiveCasesStats />
+        <IsolatedStats />
         <ICUCasesStats />
       </section>
     </main>
