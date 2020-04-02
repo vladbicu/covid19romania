@@ -14,6 +14,7 @@ import TotalDeathsNumber from "./providers/totalDeathsNumberProvider";
 import TotalRecoveredNumber from "./providers/totalRecoveredNumberProvider";
 import RecoveredStats from "./providers/recoveredStatsProvider";
 import ActiveCasesNumber from "./providers/activeCasesNumberProvider";
+import ActiveCasesStats from "./providers/dailyActiveCasesProvider";
 
 import './App.css';
 
@@ -37,6 +38,7 @@ function App() {
         <IsolatedStats />
         <QuarantinedStats />
         <RecoveredStats />
+        <ActiveCasesStats />
       </div>
     </div>
   );
