@@ -23,22 +23,22 @@ function App() {
     <div className="App">
       <div className="left-side">
         <TotalCasesNumber />
-        <TotalRecoveredNumber />
         <ActiveCasesNumber />
+        <TotalRecoveredNumber />
         <TotalDeathsNumber />
-        <DeathsPercent title="Procentul deceselor de COVID-19 raportat la numarul de cazuri confirmate" />
         <RecoveredPercent title="Procentul persoanelor vindecate de COVID-19 raportat la numarul de cazuri confirmate" />
+        <DeathsPercent title="Procentul deceselor de COVID-19 raportat la numarul de cazuri confirmate" />
       </div>
       <div className="right-side">
         <TotalCases />
-        <TotalDeaths />
-        <DailyNewCases />
-        <TotalTestsTaken />
         <MedicalCases />
-        <IsolatedStats />
-        <QuarantinedStats />
-        <RecoveredStats />
+        <DailyNewCases />
         <ActiveCasesStats />
+        <RecoveredStats />
+        <TotalDeaths />
+        <TotalTestsTaken />
+        <QuarantinedStats />
+        <IsolatedStats />
       </div>
     </div>
   );
