@@ -1,35 +1,46 @@
 import React from 'react';
+import { Heading } from "evergreen-ui";
 
-import DailyNewCases from "./providers/dailyNewCasesProvider";
-import MedicalCases from './providers/medicalCasesProvider';
-import TotalCases from "./providers/totalCasesProvider";
-import TotalDeaths from "./providers/totalDeathsProvider";
-import TotalTestsTaken from "./providers/testsTakenProvider";
-import IsolatedStats from "./providers/isolatedStatsProvider";
-import QuarantinedStats from "./providers/quarantinedStatsProvider";
-import DeathsPercent from "./providers/deathsRatioProvider";
-import RecoveredPercent from "./providers/recoveredPercentProvider";
-import TotalCasesNumber from "./providers/totalCasesNumberProvider";
-import TotalDeathsNumber from "./providers/totalDeathsNumberProvider";
-import TotalRecoveredNumber from "./providers/totalRecoveredNumberProvider";
-import RecoveredStats from "./providers/recoveredStatsProvider";
-import ActiveCasesNumber from "./providers/activeCasesNumberProvider";
-import ActiveCasesStats from "./providers/dailyActiveCasesProvider";
+// Providers that render line charts
+import DailyNewCases from "./providers/charts/dailyNewCasesProvider";
+import MedicalCases from './providers/charts/medicalCasesProvider';
+import TotalCases from "./providers/charts/totalCasesProvider";
+import TotalDeaths from "./providers/charts/totalDeathsProvider";
+import TotalTestsTaken from "./providers/charts/testsTakenProvider";
+import IsolatedStats from "./providers/charts/isolatedStatsProvider";
+import QuarantinedStats from "./providers/charts/quarantinedStatsProvider";
+import RecoveredStats from "./providers/charts/recoveredStatsProvider";
+import ActiveCasesStats from "./providers/charts/dailyActiveCasesProvider";
+import ICUCasesStats from "./providers/charts/icuCasesStatsProvider";
+// Providers that render radial charts
+import DeathsPercent from "./providers/percentage/deathsRatioProvider";
+import RecoveredPercent from "./providers/percentage/recoveredPercentProvider";
+// Providers that render info cards
+import TotalCasesNumber from "./providers/number/totalCasesNumberProvider";
+import TotalDeathsNumber from "./providers/number/totalDeathsNumberProvider";
+import TotalRecoveredNumber from "./providers/number/totalRecoveredNumberProvider";
+import ActiveCasesNumber from "./providers/number/activeCasesNumberProvider";
 
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <div className="left-side">
+    <main className="App">
+      <header>
+        <Heading size={900}>
+          Date privind evolutia cazurilor de COVID - 19 din România, preluate
+          din surse oficiale si actualizate zilnic.
+        </Heading>
+      </header>
+      <section className="left-side">
         <TotalCasesNumber />
-        <ActiveCasesNumber />
         <TotalRecoveredNumber />
         <TotalDeathsNumber />
-        <RecoveredPercent title="Procentul persoanelor vindecate de COVID-19 raportat la numarul de cazuri confirmate" />
+        <ActiveCasesNumber />
         <DeathsPercent title="Procentul deceselor de COVID-19 raportat la numarul de cazuri confirmate" />
-      </div>
-      <div className="right-side">
+        <RecoveredPercent title="Procentul persoanelor vindecate de COVID-19 raportat la numarul de cazuri confirmate" />
+      </section>
+      <section className="right-side">
         <TotalCases />
         <MedicalCases />
         <DailyNewCases />
@@ -38,9 +49,11 @@ function App() {
         <TotalDeaths />
         <TotalTestsTaken />
         <QuarantinedStats />
-        <IsolatedStats />
-      </div>
-    </div>
+        <RecoveredStats />
+        <ActiveCasesStats />
+        <ICUCasesStats />
+      </section>
+    </main>
   );
 }
 

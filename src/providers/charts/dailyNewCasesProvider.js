@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
-import LineChartWrapper from "../components/LineChart";
-import { getDailyCasesAction } from "./../actions/action-creators";
+import LineChart from "../../components/LineChart";
+import { getDailyCasesAction } from "../../actions/action-creators";
 
 const stateToProps = state => ({
   data: state.covid.data.dailyCases.values,
@@ -14,4 +14,4 @@ const dispatchToProps = dispatch => ({
   }
 });
 
-export default connect(stateToProps, dispatchToProps)(LineChartWrapper);
+export default connect(stateToProps, dispatchToProps)(LineChart);

@@ -30,6 +30,10 @@ const initialState = {
       description: "",
       values: []
     },
+    totalICU: {
+      description: "",
+      values: []
+    },
     recoveredStats: {
       description: "",
       values: []
@@ -43,7 +47,8 @@ const initialState = {
     isLoadingTotalTestsTaken: false,
     isLoadingIsolatedStats: false,
     isLoadingQuarantinedStats: false,
-    isLoadingRecoveredStats: false
+    isLoadingRecoveredStats: false,
+    isLoadingICUStats: false
   }
 };
 
@@ -279,6 +284,35 @@ const covid = (state = initialState, action) => {
         ui: {
           ...state.ui,
           isLoadingRecoveredStats: false
+        }
+      };
+    // ICU people stats
+    case COVID_ACTIONS.GET_ICU_STATS:
+      return {
+        ...state,
+        ui: {
+          ...state.ui,
+          isLoadingICUStats: true
+        }
+      };
+    case COVID_ACTIONS.RECEIVE_ICU_STATS:
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          totalICU: action.payload
+        },
+        ui: {
+          ...state.ui,
+          isLoadingICUStats: false
+        }
+      };
+    case COVID_ACTIONS.FINISH_ICU_STATS:
+      return {
+        ...state,
+        ui: {
+          ...state.ui,
+          isLoadingICUStats: false
         }
       };
     default:

@@ -30,6 +30,10 @@ export const COVID_ACTIONS = {
   GET_RECOVERED_STATS: "getRecoveredStats",
   RECEIVE_RECOVERED_STATS: "receiveRecoveredStats",
   FINISH_RECOVERED_STATS: "finishRecoveredStats",
+
+  GET_ICU_STATS: "getICUStats",
+  RECEIVE_ICU_STATS: "receiveICUStats",
+  FINISH_ICU_STATS: "finishICUStats",
 };
 
 // Total infections in Romania
@@ -142,4 +146,18 @@ export const receiveRecoveredStats = payload => ({
 
 export const finishRecoveredStats = () => ({
   type: COVID_ACTIONS.FINISH_RECOVERED_STATS
+});
+
+// Number of ICU people
+export const getICUStats = () => ({
+  type: COVID_ACTIONS.GET_ICU_STATS
+});
+
+export const receiveICUStats = payload => ({
+  type: COVID_ACTIONS.RECEIVE_ICU_STATS,
+  payload
+});
+
+export const finishICUStats = () => ({
+  type: COVID_ACTIONS.FINISH_ICU_STATS
 });

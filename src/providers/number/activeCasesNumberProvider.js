@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Heading, Card, Spinner } from "evergreen-ui";
 
-import { activeCasesNumber } from './../selectors';
+import { activeCasesNumber } from '../../selectors';
 
 const ActiveCasesNumber = ({ data, isLoading }) => {
   return (

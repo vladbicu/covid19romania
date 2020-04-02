@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
-import LineChartWrapper from "../components/LineChart";
-import { getTotalDeathsAction } from "./../actions/action-creators";
+import LineChartWrapper from "../../components/LineChart";
+import { getTotalDeathsAction } from "../../actions/action-creators";
 
 const stateToProps = state => ({
   data: state.covid.data.totalDeaths.values,

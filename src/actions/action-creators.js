@@ -30,7 +30,11 @@ import {
   // recovered people stats
   getRecoveredStats,
   receiveRecoveredStats,
-  finishRecoveredStats
+  finishRecoveredStats,
+  // ICU people stats
+  getICUStats,
+  receiveICUStats,
+  finishICUStats
 } from "./actions";
 
 const URL = {
@@ -49,7 +53,9 @@ const URL = {
   TOTAL_TESTS_TAKEN:
     "https://raw.githubusercontent.com/adrianp/covid19romania/master/tests_ro.json",
   TOTAL_RECOVERED:
-    "https://raw.githubusercontent.com/adrianp/covid19romania/master/total_recovered_ro.json"
+    "https://raw.githubusercontent.com/adrianp/covid19romania/master/total_recovered_ro.json",
+  TOTAL_ICU:
+    "https://raw.githubusercontent.com/adrianp/covid19romania/master/icu_ro.json"
 };
 
 export const getTotalCasesAction = () => async dispatch => {
@@ -145,5 +151,17 @@ export const getRecoveredStatsAction = () => async dispatch => {
   } catch (error) {
     console.log(error);
     dispatch(finishRecoveredStats());
+  }
+};
+
+export const getICUCases = () => async dispatch => {
+  dispatch(getICUStats());
+  try {
+    const raw = await fetch(URL.TOTAL_ICU);
+    const response = await raw.json();
+    dispatch(receiveICUStats(response));
+  } catch (error) {
+    console.log(error);
+    dispatch(finishICUStats());
   }
 };

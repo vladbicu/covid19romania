@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
-import LineChartWrapper from "../components/LineChart";
-import { activeCasesData } from '../selectors'
+import LineChartWrapper from "../../components/LineChart";
+import { activeCasesData } from '../../selectors'
 
 const stateToProps = state => {
   const activeCases = {

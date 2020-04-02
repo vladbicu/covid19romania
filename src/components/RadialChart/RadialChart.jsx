@@ -2,50 +2,42 @@ import React from 'react';
 import Chart from "react-apexcharts";
 import { Heading, Card } from "evergreen-ui";
 
-const GaugeChartWrapper = ({
+const RadialChart = ({
+  data,
   title = 'gauge-chart',
-  percentage
+  type = 'full'
 }) => {
   const options = {
     chart: {
       height: 280,
       type: "radialBar"
     },
-    series: [percentage],
-    colors: ["#20E647"],
+    series: [data],
+    labels: [""],
     plotOptions: {
       radialBar: {
-        startAngle: -135,
-        endAngle: 135,
-        track: {
-          background: "#333",
-          startAngle: -135,
-          endAngle: 135
+        hollow: {
+          size: "45%"
         },
         dataLabels: {
+          showOn: "always",
           name: {
             show: false
           },
           value: {
+            color: "#111",
             fontSize: "30px",
             show: true
           }
         }
       }
     },
-    fill: {
-      type: "gradient",
-      gradient: {
-        shade: "dark",
-        type: "horizontal",
-        gradientToColors: ["#87D4F9"],
-        stops: [0, 100]
-      }
-    },
     stroke: {
-      lineCap: "butt"
+      lineCap: "round"
     },
-    labels: [title]
+    fill: {
+      colors: ["#F44336", "#E91E63", "#9C27B0"]
+    }
   };
   return (
     <div className="card-wrapper">
@@ -58,11 +50,11 @@ const GaugeChartWrapper = ({
         flexDirection="column"
         padding={5}
       >
-        <Chart options={options} series={[percentage]} type="radialBar" />
+        <Chart options={options} series={[data]} type="radialBar" />
         <Heading size={600}>{title}</Heading>
       </Card>
     </div>
   );
 };
 
-export default GaugeChartWrapper;
+export default RadialChart;
