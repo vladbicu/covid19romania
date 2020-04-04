@@ -23,7 +23,7 @@ const LineChartWrapper = ({
       <LineChart
         key={title}
         width={window.innerWidth}
-        height={500}
+        height={400}
         data={data}
         strokeWidth={3}
         margin={{

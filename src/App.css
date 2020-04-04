@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;800;900&display=swap');
+
 * {
   box-sizing: border-box;
 }
@@ -8,6 +10,8 @@ html {
 
 body {
   margin: 0;
+  background-color: #E5E5E5;
+  font-family: 'Nunito Sans', sans-serif;
 }
 
 .App {
@@ -28,6 +32,7 @@ header {
 .left-side {
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   margin-bottom: 48px;
 }
 
@@ -47,13 +52,74 @@ header {
   margin-bottom: 24px;
 }
 
+.chart-wrapper > div {
+  background-color: #fff;
+}
+
 .card-wrapper {
+  width: 25%;
   padding: 10px;
 }
 
-.card-wrapper > div{
-  height: 100%;
+.card-wrapper > div {
+  background-color: #fff;
 }
+
+.card-wrapper-info {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.card-wrapper-info p {
+  margin-left: 8px;
+}
+
+.card-wrapper-info-number {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin: 0 0 0 auto;
+}
+
+.card-wrapper-info-number h2 {
+  margin-bottom: 0;
+}
+
+.card-wrapper-info-number div {
+  display: flex;
+}
+
+.card-wrapper-numbers h2 {
+  margin: 0 4px;
+}
+
+.card-wrapper-numbers {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 4px;
+  margin: 0 0 8px 0;
+  width: 100%;
+}
+
+.card-wrapper-chart {
+  width: 100%;
+}
+
+.card-wrapper > div{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 16px;
+}
+
+/* @media screen and (max-width: 1400px) {
+  .card-wrapper {
+    width: 50%;
+  }
+} */
 
 @media screen and (max-width: 767px) {
   .App {
@@ -71,6 +137,9 @@ header {
   .right-side {
     width: 100%;
     flex-direction: column;
+  }
+  .card-wrapper {
+    width: 100%;
   }
   .chart-wrapper {
     width: 100%;

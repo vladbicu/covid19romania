@@ -1,41 +1,14 @@
-import React from "react";
 import { connect } from "react-redux";
-import { Heading, Card, Spinner } from "evergreen-ui";
+import CardWithChart from '../../components/CardWithChart';
+import { activeCasesData, getDayByDayStats } from '../../selectors';
 
-import { activeCasesNumber } from '../../selectors';
-
-const ActiveCasesNumber = ({ data, isLoading }) => {
-  return (
-    <div className="card-wrapper">
-      <Card
-        background="blueTint"
-        elevation={3}
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        flexDirection="column"
-        padding={5}
-        border="default"
-      >
-        {isLoading || data.length === 0 ? (
-          <Spinner size={32} />
-        ) : (
-            <>
-              <Heading size={900} marginBottom={10}>
-                {data}
-              </Heading>
-              <Heading size={600}>
-                Cazuri active de COVID-19 in Romania
-              </Heading>
-            </>
-          )}
-      </Card>
-    </div>
-  );
-};
-
-const stateToProps = state => ({
-  data: activeCasesNumber(state)
+const stateToProps = (state, ownProps) => ({
+  data: activeCasesData(state),
+  number: getDayByDayStats(state).active,
+  isLoading: state.covid.ui.isLoadingTotalCases &&
+    state.covid.ui.isLoadingTotalDeaths &&
+    state.covid.ui.isLoadingRecoveredStats,
+  ...ownProps
 });
 
-export default connect(stateToProps)(ActiveCasesNumber);
+export default connect(stateToProps)(CardWithChart);

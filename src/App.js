@@ -29,6 +29,7 @@ import ICUCasesStats from "./providers/charts/icuCasesStatsProvider";
 // Providers that render radial charts
 import DeathsPercent from "./providers/percentage/deathsRatioProvider";
 import RecoveredPercent from "./providers/percentage/recoveredPercentProvider";
+// import AggregatedTotals from "./providers/percentage/aggregatedStatsProvider";
 // Providers that render info cards
 import TotalCasesNumber from "./providers/number/totalCasesNumberProvider";
 import TotalDeathsNumber from "./providers/number/totalDeathsNumberProvider";
@@ -69,10 +70,27 @@ const App = ({
         </Heading>
       </header>
       <section className="left-side">
-        <TotalCasesNumber />
-        <ActiveCasesNumber />
-        <TotalRecoveredNumber />
-        <TotalDeathsNumber />
+        <TotalCasesNumber
+          chartColor="#FFD650"
+          icon="numerical"
+          iconColor="warning"
+          text="Numar total"
+        />
+        <ActiveCasesNumber
+          text="Cazuri active"
+        />
+        <TotalRecoveredNumber
+          chartColor="#008000"
+          icon="pulse"
+          iconColor="success"
+          text="Persoane vindecate"
+        />
+        <TotalDeathsNumber
+          chartColor="#f8bbb9"
+          icon="heart-broken"
+          iconColor="danger"
+          text="Numar decese"
+        />
         <RecoveredPercent title="Procentul persoanelor vindecate de COVID-19 raportat la numarul de cazuri confirmate" />
         <DeathsPercent title="Procentul deceselor de COVID-19 raportat la numarul de cazuri confirmate" />
       </section>

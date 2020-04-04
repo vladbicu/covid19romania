@@ -4,20 +4,17 @@ import { Heading, Card } from "evergreen-ui";
 
 const RadialChart = ({
   data,
-  title = 'gauge-chart',
-  type = 'full'
+  title = 'gauge-chart'
 }) => {
   const options = {
     chart: {
-      height: 280,
+      height: 120,
       type: "radialBar"
     },
-    series: [data],
-    labels: [""],
     plotOptions: {
       radialBar: {
         hollow: {
-          size: "45%"
+          size: "55%"
         },
         dataLabels: {
           showOn: "always",
@@ -26,7 +23,7 @@ const RadialChart = ({
           },
           value: {
             color: "#111",
-            fontSize: "30px",
+            fontSize: "22px",
             show: true
           }
         }
@@ -36,13 +33,12 @@ const RadialChart = ({
       lineCap: "round"
     },
     fill: {
-      colors: ["#F44336", "#E91E63", "#9C27B0"]
+      colors: ["#6665F8", "#008000", "#f8bbb9"]
     }
   };
   return (
     <div className="card-wrapper">
       <Card
-        background="blueTint"
         elevation={3}
         display="flex"
         justifyContent="center"
@@ -50,9 +46,9 @@ const RadialChart = ({
         flexDirection="column"
         padding={5}
       >
-        <Chart options={options} series={[data]} type="radialBar" />
+        <Chart options={options} series={[data]} type="radialBar" height={150} />
         <Heading size={600}>{title}</Heading>
-      </Card>
+        </Card>
     </div>
   );
 };

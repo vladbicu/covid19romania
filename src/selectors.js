@@ -5,13 +5,14 @@ const totalCases = state => state.covid.data.totalCases.values;
 const totalDeaths = state => state.covid.data.totalDeaths.values;
 const totalRecovered = state => state.covid.data.recoveredStats.values;
 
+const calculatePercentage = (a, b) => (a / b) * 100;
+
 export const getDeathPercentage = createSelector(totalCases, totalDeaths, (infected, deaths) => {
   let percentage = 0;
   if (infected.length > 0 && deaths.length > 0) {
     const infectedSum = infected[infected.length -1].value;
     const deathsSum = deaths[deaths.length - 1].value;
-
-    percentage = (deathsSum / infectedSum) * 100;
+    percentage = calculatePercentage(deathsSum, infectedSum);
   }
 
   return +percentage.toFixed(2);
@@ -73,5 +74,70 @@ export const activeCasesData = createSelector(
     }
 
     return activeCases;
+  }
+);
+
+export const getDayByDayStats = createSelector(
+  totalCases,
+  totalDeaths,
+  totalRecovered,
+  activeCasesData,
+  (total, deaths, recovered, active) => {
+    if (total.length > 0 && deaths.length > 0 && recovered.length > 0 && active.length > 0) {
+      const casesYesterday = total[total.length - 2].value || 0;
+      const casesToday = total[total.length - 1].value || 0;
+      const deathsYesterday = deaths[deaths.length - 2].value || 0;
+      const deathsToday = deaths[deaths.length - 1].value || 0;
+      const recoveredYesterday = recovered[recovered.length - 2].value || 0;
+      const recoveredToday = recovered[recovered.length - 1].value || 0;
+      const activeYesterday = active[active.length - 2].value || 0;
+      const activeToday = active[active.length - 1].value || 0;
+
+      return {
+        cases: {
+          total: casesToday,
+          amount: casesToday - casesYesterday,
+          percentage: calculatePercentage(casesToday - casesYesterday, casesToday).toFixed(2)
+        },
+        deaths: {
+          total: deathsToday,
+          amount: deathsToday - deathsYesterday,
+          percentage: calculatePercentage(deathsToday - deathsYesterday, deathsToday).toFixed(2)
+        },
+        recovered: {
+          total: recoveredToday,
+          amount: recoveredToday - recoveredYesterday,
+          percentage: calculatePercentage(recoveredToday - recoveredYesterday, recoveredToday).toFixed(2)
+        },
+        active: {
+          total: activeToday,
+          amount: activeToday - activeYesterday,
+          percentage: calculatePercentage(activeToday - activeYesterday, activeToday).toFixed(2)
+        }
+      };
+    } else {
+      return {
+        cases: {
+          total: 0,
+          amount: 0,
+          lastDayEvolutionPercentage: 0
+        },
+        deaths: {
+          total: 0,
+          amount: 0,
+          percentage: 0
+        },
+        recovered: {
+          total: 0,
+          amount: 0,
+          percentage: 0
+        },
+        active: {
+          total: 0,
+          amount: 0,
+          percentage: 0
+        }
+      };
+    }
   }
 );
